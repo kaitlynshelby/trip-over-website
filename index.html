@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Trip Over Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fe8a678e3c.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="custom.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <div id="wrapper-canvas"></div>
+    <div class="slider">
+        <div class="slider__inner">
+            <div class="slider__contents">
+                <div
+                    class="col-sm-12 col-lg-4 offset-lg-1 d-flex justify-content-center justify-content-lg-start align-items-center h-100">
+                    <section class="text-center text-lg-start">
+                        <h1 class="text-white display-1">Trip Over Music</h1>
+                        <h4 class="text-white">The best music you've never heard</h4>
+                        <div class="pt-3 download-badges">
+                            <input type="image" src="/assets/images/download_on_app_store.png"
+                                title="Download on the App Store" />
+                            <input type="image" src="/assets/images/get_on_google_play.png"
+                                title="Get on Google Play" />
+                        </div>
+                        <p class="text-light pt-5 fs-5">
+                            We are working hard to bring new music to you, but in the meantime, sign up below to be
+                            notified when we launch!
+                        </p>
+                        <div class="input-group">
+                            <input class="form-control form-control-lg" type="email" placeholder="Email address" />
+                            <button type="button" class="btn btn-lg btn-primary">Notify Me!</button>
+                        </div>
+                        <div class="slider__nav pt-5">
+                            <button type="button" id="btnLearnMore" class="btn btn-xl btn-secondary">What is Trip
+                                Over?
+                                <i class="fa-solid fa-angle-right"></i></button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="slider__contents text-light">
+                <div class="col-1 d-flex align-items-center justify-content-start">
+                    <div style="width:50px"></div>
+                    <div class="slider__nav">
+                        <button type="button" id="btnGoBack" class="btn btn-outline-secondary btn-circle pl-5"><i
+                                class="fa-solid fa-angle-left"></i></i></button>
+                    </div>
+                </div>
+                <div class="col-6 offset-2 align-self-center fs-4 lh-lg">
+                    <h1 class="text-white pb-4">
+                        Be the first to get Trip Over!
+                    </h1>
+                    <p>
+                        Trip Over is the free music streaming app where you can discover music by independent
+                        artists
+                        from all over the world. It's "the best music you've never heard"!
+                    </p>
+                    <p>
+                        Use it for free or become a VIP Supporter and your donation goes directly to Global Music
+                        Project to help get musical
+                        instruments to people in need - or, you can choose to donate 100% to your new favorite Trip
+                        Over
+                        artists.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="animation.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "trip-over",
+  "version": "1.0.0",
+  "description": "trip over music app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaitlyn Sorum",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap-scss": "^4.6.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "sass": "^1.49.7"
+  }
+}
