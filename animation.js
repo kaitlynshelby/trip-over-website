@@ -1,6 +1,12 @@
-const BLUE = "#371efa";
-const PINK = "#ce185e";
-const GREEN = "#91d119";
+const BLUE = `#371efa`;
+const PINK = `#ce185e`;
+const GREEN = `#91d119`;
+const WHITE = `#afafaf`;
+const BLACK = `#181922`;
+const NONE = `transparent`;
+const colorsAll = [BLUE, PINK, GREEN, WHITE, BLACK];
+const colorsNoWhite = [BLUE, PINK, BLACK, BLACK];
+const colorsNoBlack = [BLUE, PINK, GREEN, WHITE];
 
 var canvas = $("#wrapper-canvas").get(0);
 
@@ -26,6 +32,8 @@ function runMatter() {
     Composites = Matter.Composites,
     Bodies = Matter.Bodies;
 
+  Common._seed = new Date().valueOf();
+
   // create engine
   var engine = Engine.create();
 
@@ -42,7 +50,7 @@ function runMatter() {
       width: dimensions.width,
       height: dimensions.height,
       wireframes: false,
-      background: "#181922",
+      background: BLACK,
     },
   });
 
@@ -56,93 +64,54 @@ function runMatter() {
   var world = engine.world;
   world.gravity.scale = 0;
 
+  let fillColor = Common.choose(colorsNoWhite);
+  let strokeColor = fillColor === BLACK ? Common.choose(colorsNoBlack) : NONE;
   // create a body with an attractor
   var attractiveBody = Bodies.circle(
     render.options.width / 2,
     render.options.height / 2,
-    Math.max(dimensions.width / 4, dimensions.height / 4) / 2,
+    400,
     {
       render: {
-        fillStyle: `transparent`,
-        strokeStyle: `transparent`,
-        lineWidth: 0,
+        fillStyle: fillColor,
+        strokeStyle: strokeColor,
+        lineWidth: 3,
       },
       isStatic: true,
       plugin: {
         attractors: [
           function (bodyA, bodyB) {
-            return {
-              x: (bodyA.position.x - bodyB.position.x) * 1e-6,
-              y: (bodyA.position.y - bodyB.position.y) * 1e-6,
+            var force = {
+              x: (bodyA.position.x - bodyB.position.x) * 1e-7,
+              y: (bodyA.position.y - bodyB.position.y) * 1e-7,
             };
+
+            // apply force to both bodies
+            Body.applyForce(bodyA, bodyA.position, Matter.Vector.neg(force));
+            Body.applyForce(bodyB, bodyB.position, force);
           },
         ],
       },
     }
   );
-
   World.add(world, attractiveBody);
 
   // add some bodies that to be attracted
-  for (var i = 0; i < 15; i += 1) {
+  for (var i = 0; i < 10; i += 1) {
     let x = Common.random(0, render.options.width);
     let y = Common.random(0, render.options.height);
     let s =
       Common.random() > 0.6 ? Common.random(10, 80) : Common.random(4, 60);
-    let poligonNumber = Common.random(3, 6);
-    var body = Bodies.polygon(
-      x,
-      y,
-      poligonNumber,
-      s,
-
-      {
-        mass: s / 20,
-        friction: 0,
-        frictionAir: 0.03,
-        angle: Math.round(Math.random() * 360),
-        render: {
-          fillStyle: "transparent",
-          strokeStyle: `#DDDDDD`,
-          lineWidth: 2,
-        },
-      }
-    );
-
-    World.add(world, body);
-
-    let r = Common.random(0, 1);
-    var circle = Bodies.circle(x, y, Common.random(20, 40), {
-      mass: Common.random(10, 20),
+    let r = Common.random(300, 700);
+    let fillColor = Common.choose(colorsNoWhite);
+    let strokeColor = fillColor === BLACK ? Common.choose(colorsNoBlack) : NONE;
+    var circle = Bodies.circle(x, y, r, {
+      mass: Common.random(5, 21),
       friction: 0,
-      frictionAir: 0.01,
+      frictionAir: 0,
       render: {
-        fillStyle: r > 0.3 ? BLUE : GREEN,
-        strokeStyle: `transparent`,
-        lineWidth: 2,
-      },
-    });
-    World.add(world, circle);
-
-    var circle = Bodies.circle(x, y, Common.random(30, 50), {
-      mass: Common.random(10, 20),
-      friction: 0,
-      frictionAir: 0.2,
-      render: {
-        fillStyle: r > 0.3 ? PINK : BLUE,
-        strokeStyle: `transparent`,
-        lineWidth: 4,
-      },
-    });
-    World.add(world, circle);
-
-    var circle = Bodies.circle(x, y, Common.random(20, 60), {
-      mass: Common.random(10, 20),
-      friction: 0.6,
-      frictionAir: 0.8,
-      render: {
-        fillStyle: `#181922`,
-        strokeStyle: `#FFFFFF`,
+        fillStyle: fillColor,
+        strokeStyle: strokeColor,
         lineWidth: 3,
       },
     });
@@ -150,18 +119,17 @@ function runMatter() {
   }
 
   // add mouse control
-  var mouse = Mouse.create(render.canvas);
+  var mouse = Mouse.create(document.getElementById("slider"));
 
-  Events.on(engine, "afterUpdate", function (e) {
-    if (!e.clientX) return;
-    console.log("here");
+  Events.on(engine, "afterUpdate", function () {
+    if (!mouse.position.x) return;
+
+    var distX = mouse.position.x - attractiveBody.position.x;
+    var distY = mouse.position.y - attractiveBody.position.y;
     Body.translate(attractiveBody, {
-      x: (e.clientX - attractiveBody.position.x) * 0.12,
-      y: (e.clientY - attractiveBody.position.y) * 0.12,
+      x: distX * 0.12,
+      y: distY * 0.12,
     });
-  });
-  $(".slider").on("mousemove", function (e) {
-    Matter.Events.trigger(engine, "afterUpdate", e);
   });
 
   // return a context for MatterDemo to control

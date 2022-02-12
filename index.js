@@ -1,28 +1,33 @@
-const gradient = document.querySelector(".gradient");
+var $panel = $(".slider__inner").first();
 
-// function onMouseMove(event) {
-//   setTimeout(function () {
-//     gradient.style.backgroundImage =
-//       "radial-gradient(at " +
-//       event.clientX +
-//       "px " +
-//       event.clientY +
-//       "px, #ce185eb6 0, #0a121b 70%)";
-//   });
-// }
-// document.addEventListener("mousemove", onMouseMove);
-
-var btnLearnMore = document.getElementById("btnLearnMore");
-var panel = document.getElementsByClassName("slider__inner")[0];
-
-btnLearnMore.addEventListener("click", function () {
-  panel.style.left = "-100%";
+$("#btnLearnMore").on("click", function () {
+  $panel.css("left", "-100%");
 });
 
-var btnGoBack = document.getElementById("btnGoBack");
+$("#btnGoBack").on("click", function () {
+  $panel.css("left", "0");
+});
 
-btnGoBack.addEventListener("click", function () {
-  // if (radio2.checked == true) {
-  panel.style.left = "0";
-  // }
+const $badge = $(".download-badge");
+const $input_signup = $("#input_signup");
+
+const tooltip = new bootstrap.Tooltip($input_signup, {
+  html: true,
+  trigger: "manual",
+  placement: "right",
+  title:
+    "<div class='p-3'>We're launching soon!<br>Sign up to get notified.</div>",
+  offset: [0, 10],
+  container: "body",
+});
+
+$(".download-badge").on("click", function () {
+  tooltip.show();
+  setTimeout(function () {
+    tooltip.hide();
+  }, 2000);
+});
+
+$("#input_signup").on("focus", function () {
+  tooltip.hide();
 });

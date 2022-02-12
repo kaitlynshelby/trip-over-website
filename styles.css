@@ -6,7 +6,7 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-.display-1 {
+[class*="display-"] {
   font-family: "Archivo", sans-serif;
   font-weight: 700;
 }
@@ -100,6 +100,7 @@ body {
 }
 
 .slider__contents {
+  overflow: hidden;
   height: 100%;
   width: 50%;
   display: -webkit-box;
@@ -115,6 +116,7 @@ body {
 
 .slider__inner {
   position: absolute;
+  overflow: hidden;
   top: 0;
   left: 0;
   width: 200%;
@@ -133,4 +135,22 @@ body {
 .download-badges input {
   height: 40px;
   width: 120px;
+}
+
+.tooltip-inner {
+  background-color: var(--bs-info);
+  color: var(--bs-dark);
+}
+
+.tooltip .tooltip-arrow::before {
+  border-right-color: var(--bs-info) !important;
+}
+
+#about p {
+  font-size: 1.5rem;
+  line-height: 1.75;
+}
+
+#sign-up-lead {
+  font-size: 1.25rem;
 }
