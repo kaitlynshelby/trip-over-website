@@ -100,7 +100,6 @@ body {
 }
 
 .slider__contents {
-  overflow: hidden;
   height: 100%;
   width: 50%;
   display: -webkit-box;
@@ -116,7 +115,6 @@ body {
 
 .slider__inner {
   position: absolute;
-  overflow: hidden;
   top: 0;
   left: 0;
   width: 200%;
