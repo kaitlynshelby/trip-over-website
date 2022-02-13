@@ -1,12 +1,40 @@
-$theme-colors: (
-  "primary": #371efa,
-  "secondary": #ce185e,
-  "info": #64920f,
-  "success": #0ac3f1,
-  "light": #afafaf,
-  "dark": #181922,
-);
+$primary: #371efa;
+$secondary: #ce185e;
+$info: #64920f;
+$success: #0ac3f1;
+$light: #afafaf;
+$dark: #181922;
 
 $white: #eeeeee;
+$tooltip-arrow-color: $info;
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.btn-circle {
+  border-radius: 100%;
+  border-width: 1.5px;
+  padding: 1rem 1.75rem !important;
+}
+
+.btn-sm .btn-circle {
+  padding: 0.75rem 0.75rem !important;
+}
+
+.btn-lg .btn-circle {
+  padding: 2rem 2rem !important;
+}
+
+.btn-xl,
+.btn-group-xl > .btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.5rem;
+  border-radius: 0.3rem;
+}
+
+.tooltip-inner {
+  background-color: var(--bs-info);
+}
+
+a {
+  text-decoration: none;
+}
