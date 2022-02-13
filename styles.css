@@ -49,7 +49,7 @@ body {
   height: 100%;
   position: relative;
   transform: translateY(-100%);
-  overflow: hidden;
+  overflow-x: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -137,18 +137,12 @@ body {
 
 .tooltip-inner {
   background-color: var(--bs-info);
-  color: var(--bs-dark);
 }
 
-.tooltip .tooltip-arrow::before {
+.tooltip-arrow::before {
   border-right-color: var(--bs-info) !important;
 }
 
-#about p {
-  font-size: 1.5rem;
-  line-height: 1.75;
-}
-
-#sign-up-lead {
-  font-size: 1.25rem;
+a {
+  text-decoration: none;
 }

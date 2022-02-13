@@ -8,6 +8,11 @@ const colorsAll = [BLUE, PINK, GREEN, WHITE, BLACK];
 const colorsNoWhite = [BLUE, PINK, BLACK, BLACK];
 const colorsNoBlack = [BLUE, PINK, GREEN, WHITE];
 
+var isSmallScreen = function () {
+  var window_width = $(window).width();
+  return window_width <= 500;
+};
+
 var canvas = $("#wrapper-canvas").get(0);
 
 var dimensions = {
@@ -57,15 +62,25 @@ function runMatter() {
   // create runner
   var runner = Runner.create();
 
-  // Runner.run(runner, engine);
-  // Render.run(render);
-
   // create demo scene
   var world = engine.world;
   world.gravity.scale = 0;
 
   let fillColor = Common.choose(colorsNoWhite);
   let strokeColor = fillColor === BLACK ? Common.choose(colorsNoBlack) : NONE;
+  let attractor = [
+    function (bodyA, bodyB) {
+      var force = {
+        x: (bodyA.position.x - bodyB.position.x) * 1e-7,
+        y: (bodyA.position.y - bodyB.position.y) * 1e-7,
+      };
+
+      // apply force to both bodies
+      Body.applyForce(bodyA, bodyA.position, Matter.Vector.neg(force));
+      Body.applyForce(bodyB, bodyB.position, force);
+    },
+  ];
+
   // create a body with an attractor
   var attractiveBody = Bodies.circle(
     render.options.width / 2,
@@ -78,22 +93,16 @@ function runMatter() {
         lineWidth: 3,
       },
       isStatic: true,
+      force: {
+        x: 1e-7,
+        y: 1e-7,
+      },
       plugin: {
-        attractors: [
-          function (bodyA, bodyB) {
-            var force = {
-              x: (bodyA.position.x - bodyB.position.x) * 1e-7,
-              y: (bodyA.position.y - bodyB.position.y) * 1e-7,
-            };
-
-            // apply force to both bodies
-            Body.applyForce(bodyA, bodyA.position, Matter.Vector.neg(force));
-            Body.applyForce(bodyB, bodyB.position, force);
-          },
-        ],
+        attractors: attractor,
       },
     }
   );
+
   World.add(world, attractiveBody);
 
   // add some bodies that to be attracted
@@ -118,19 +127,30 @@ function runMatter() {
     World.add(world, circle);
   }
 
-  // add mouse control
-  var mouse = Mouse.create(document.getElementById("slider"));
-
-  Events.on(engine, "afterUpdate", function () {
-    if (!mouse.position.x) return;
-
-    var distX = mouse.position.x - attractiveBody.position.x;
-    var distY = mouse.position.y - attractiveBody.position.y;
+  if (isSmallScreen()) {
     Body.translate(attractiveBody, {
-      x: distX * 0.12,
-      y: distY * 0.12,
+      x: attractiveBody.position.x * 2,
+      y: attractiveBody.position.y * 2,
     });
-  });
+  }
+
+  // add mouse control
+  if (!isSmallScreen()) {
+    var mouse = Mouse.create(document.getElementById("slider"));
+    mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+    mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+
+    Events.on(engine, "afterUpdate", function () {
+      if (!mouse.position.x || isSmallScreen()) return;
+
+      var distX = mouse.position.x - attractiveBody.position.x;
+      var distY = mouse.position.y - attractiveBody.position.y;
+      Body.translate(attractiveBody, {
+        x: distX * 0.12,
+        y: distY * 0.12,
+      });
+    });
+  }
 
   // return a context for MatterDemo to control
   let data = {

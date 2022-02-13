@@ -1,7 +1,7 @@
 $theme-colors: (
   "primary": #371efa,
   "secondary": #ce185e,
-  "info": #91d119,
+  "info": #64920f,
   "success": #0ac3f1,
   "light": #afafaf,
   "dark": #181922,
@@ -9,4 +9,4 @@ $theme-colors: (
 
 $white: #eeeeee;
 
-@import "node_modules/bootstrap-scss/bootstrap.scss";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
