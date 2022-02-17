@@ -1,11 +1,13 @@
 var $panel = $(".slider__inner").first();
 
 $(".btnLearnMore").on("click", function () {
+  $("#about").append($("#sign-up"));
   $panel.css("left", "-100%");
   $(".mockup").toggleClass("show");
 });
 
 $(".btnGoBack").on("click", function () {
+  $("#lead-in").after($("#sign-up"));
   $panel.css("left", "0");
   $(".mockup").toggleClass("show");
 });
@@ -64,23 +66,38 @@ function thanksTooltip() {
   return t;
 }
 
-// Fetch all the forms we want to apply custom Bootstrap validation styles to
-var forms = document.querySelectorAll("form");
-var buttons = document.querySelectorAll("[type='email'] + button");
-// Loop over them and prevent submission
+$("[type='email']").on("input", function () {
+  var form = this.closest("form");
+  form.classList.add("was-validated");
+});
 
-buttons.forEach(function () {
-  addEventListener("submit", function (event) {
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      event.preventDefault();
-      event.stopPropagation();
-      form.classList.add("was-validated");
-      if (form.checkValidity()) {
+$("[type='email'] + button").on("click", function (event) {
+  var button = this;
+  var input = $(this).prev();
+  var form = this.closest("form");
+  form.classList.add("was-validated");
+
+  if (form.checkValidity()) {
+    $(button).html(
+      "<div class='spinner-grow spinner-grow-sm text-light' role='status'><span class='visually-hidden'>Loading...</span></div>"
+    );
+    $(button).attr("disabled", "disabled");
+    var url =
+      "https://script.google.com/macros/s/AKfycbztiP5lCtIm8Kl6neqgI7n3SvM6ibz_pxO9E7v_LlIB7gqcpTdKbkFfiNFI4OCazMB0/exec";
+    $.ajax({
+      crossDomain: true,
+      url: url,
+      method: "POST",
+      data: { email: input.val() },
+      success: function () {
         thanksTooltip().show();
         setTimeout(function () {
           thanksTooltip().hide();
-        }, 4000);
-      }
+        }, 3000);
+        $(button).html("<i class='fa-solid fa-circle-check'></i>");
+        input.attr("readonly", true);
+      },
     });
-  });
+  }
+  return false;
 });

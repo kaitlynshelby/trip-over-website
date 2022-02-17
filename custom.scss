@@ -10,18 +10,26 @@ $tooltip-arrow-color: $info;
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
+.btn-circle::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: "\f104";
+}
+
 .btn-circle {
   border-radius: 100%;
-  border-width: 1.5px;
+  border-width: 2px;
   padding: 1rem 1.5rem !important;
 }
 
-.btn-sm .btn-circle {
+.btn-sm.btn-circle {
   padding: 0.75rem 0.75rem !important;
 }
 
-.btn-lg .btn-circle {
-  padding: 2rem 2rem !important;
+.btn-lg.btn-circle {
+  padding: 1.5rem 2rem !important;
 }
 
 .btn-xl,

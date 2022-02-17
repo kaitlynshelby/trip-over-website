@@ -37,58 +37,69 @@
                                 title="Get on Google Play" />
                         </div>
 
-                        <div class="d-md-none">
-                            <p id="sign-up-lead" class="text-white pt-5">
-                                We are working hard to bring you your new favorite way to discover music, but in the
-                                meantime, sign up below to be
-                                notified when we launch!
-                            </p>
-                        </div>
-                        <div class="d-none d-md-block">
-                            <p id="sign-up-lead" class="text-white pt-5 fs-5">
-                                We are working hard to bring you your new favorite way to discover music, but in the
-                                meantime, sign up below to be
-                                notified when we launch!
-                            </p>
-                        </div>
-                        <form class="d-md-none">
-                            <div id="input-signup1" class="input-group input-group-sm">
-                                <input class="form-control form-control-sm" type="email" placeholder="Email address"
-                                    required />
-                                <button type="submit" class="btn btn-sm btn-primary">Notify
-                                    Me!</button>
+                        <section id="lead-in">
+                            <div class="d-md-none">
+                                <p id="sign-up-lead" class="text-white pt-5">
+                                    We are working hard to bring you your new favorite way to discover music, but in the
+                                    meantime, sign up below to be
+                                    notified when we launch!
+                                </p>
                             </div>
-                            <div class="slider__nav py-5">
-                                <button type="button" class="btnLearnMore btn btn-lg btn-secondary">What is Trip
-                                    Over?
-                                    <i class="fa-solid fa-angle-right"></i></button>
+                            <div class="d-none d-md-block">
+                                <p id="sign-up-lead" class="text-white pt-5 fs-5">
+                                    We are working hard to bring you your new favorite way to discover music, but in the
+                                    meantime, sign up below to be
+                                    notified when we launch!
+                                </p>
                             </div>
-                        </form>
-                        <form class="d-none d-md-block">
-                            <div id="input-signup2" class="input-group input-group-lg">
-                                <input class="form-control form-control-lg" type="email" placeholder="Email address"
-                                    required />
-                                <button type="submit" class="btn btn-lg btn-primary">Notify
-                                    Me!</button>
+                        </section>
+
+                        <section id="sign-up">
+                            <form class="gform d-md-none">
+                                <div id="input-signup1" class="input-group input-group-sm">
+                                    <input class="form-control form-control-sm" type="email" name="email"
+                                        placeholder="Email address" required />
+                                    <button type="button" class="btn btn-sm btn-primary">Notify
+                                        Me!</button>
+                                </div>
+                            </form>
+                            <form class="gform d-none d-md-block">
+                                <div id="input-signup2" class="input-group input-group-lg">
+                                    <input class="form-control form-control-lg" type="email" name="email"
+                                        placeholder="Email address" required />
+                                    <button type="button" class="btn btn-lg btn-primary">Notify
+                                        Me!</button>
+                                </div>
+                            </form>
+                        </section>
+                        <section id="about-btn">
+                            <div class="d-md-none">
+                                <div class="slider__nav py-5">
+                                    <button type="button" class="btnLearnMore btn btn-lg btn-secondary">What is Trip
+                                        Over?
+                                        <i class="fa-solid fa-angle-right"></i></button>
+                                </div>
                             </div>
-                            <div class="slider__nav py-5">
-                                <button type="button" id="" class="btnLearnMore btn btn-xl btn-secondary">What is
-                                    Trip
-                                    Over?
-                                    <i class="fa-solid fa-angle-right"></i></button>
+                            <div class="d-none d-md-block">
+                                <div class="slider__nav py-5">
+                                    <button type="button" class="btnLearnMore btn btn-xl btn-secondary">What is
+                                        Trip
+                                        Over?
+                                        <i class="fa-solid fa-angle-right"></i></button>
+                                </div>
                             </div>
-                        </form>
+                        </section>
                     </section>
                 </div>
             </div>
             <div class="slider__contents text-light d-flex flex-wrap">
                 <div class="col-3 d-flex pt-5 px-5">
                     <div class="slider__nav">
-                        <button type="button" class="btnGoBack btn btn-outline-light btn-circle d-md-none"><i
-                                class="fa-solid fa-angle-left"></i></i></button>
+                        <button type="button" class="btnGoBack btn btn-secondary btn-circle d-md-none ">
+                        </button>
                         <button type="button"
-                            class="btnGoBack btn btn-lg btn-outline-light btn-circle d-none d-md-block"><i
-                                class="fa-solid fa-angle-left"></i></i></button>
+                            class="btnGoBack btn btn-lg btn-secondary btn-circle d-none d-md-block my-auto">
+                        </button>
                     </div>
                     <img class="mockup mt-auto d-none d-lg-block" src="/assets/images/mockup.png" alt="Trip Over App">
                 </div>
@@ -98,7 +109,7 @@
                         <h1 class="text-white pb-4">
                             Be the first to get Trip Over!
                         </h1>
-                        <div class="fs-5">
+                        <div class="fs-6 d-md-none">
                             <p>
                                 Trip Over is the free music streaming app where you can discover music by independent
                                 artists
@@ -114,21 +125,42 @@
                                 Over
                                 artists.
                             </p>
+                            <p class="mb-5">
+                                Sign up below to get notified when we launch!
+                            </p>
                         </div>
-
+                        <div class="fs-5 d-none d-md-block">
+                            <p>
+                                Trip Over is the free music streaming app where you can discover music by independent
+                                artists
+                                from all over the world. It's "the best music you've never heard"!
+                            </p>
+                            <p>
+                                Use it for free or become a VIP Supporter and your donation goes directly to <a
+                                    class="text-success" href="https://globalmusicproject.org/" target="_blank">Global
+                                    Music
+                                    Project</a> to help get musical
+                                instruments to people in need - or, you can choose to donate 100% to your new favorite
+                                Trip
+                                Over
+                                artists.
+                            </p>
+                            <p class="mb-5">
+                                Sign up below to get notified when we launch!
+                            </p>
+                        </div>
                     </section>
 
                 </div>
                 <div class="w-100 d-lg-none"></div>
-                <div class="col d-flex"> <img class="mockup hide mx-auto mt-auto d-lg-none"
+                <div class="col d-flex pt-5"> <img class="mockup hide mx-auto mt-auto d-lg-none"
                         src="/assets/images/mockup.png" alt="Trip Over App"></div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"
@@ -140,7 +172,6 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@zouloux/shake@1.3.0/shake.min.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="animation.js"></script>
 
