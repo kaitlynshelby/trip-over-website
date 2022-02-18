@@ -12000,11 +12000,11 @@ a {
 }
 
 #tagline {
-  font-size: large;
+  font-size: medium;
 }
 
 #logo {
-  width: 100%;
+  width: 70%;
 }
 
 @media (min-width: 576px) {
@@ -12014,9 +12014,6 @@ a {
   }
   #tagline {
     font-size: x-large;
-  }
-  #logo {
-    width: 70%;
   }
 }
 

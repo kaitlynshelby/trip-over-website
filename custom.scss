@@ -53,11 +53,11 @@ a {
 }
 
 #tagline {
-  font-size: large;
+  font-size: medium;
 }
 
 #logo {
-  width: 100%;
+  width: 70%;
 }
 
 @include media-breakpoint-up(sm) {
@@ -68,9 +68,6 @@ a {
 
   #tagline {
     font-size: x-large;
-  }
-  #logo {
-    width: 70%;
   }
 }
 
