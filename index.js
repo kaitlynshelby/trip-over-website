@@ -1,5 +1,3 @@
-var $panel = $(".slider__inner").first();
-
 const $badge = $(".download-badge");
 const $input_signup1 = $("#input-signup1");
 const $input_signup2 = $("#input-signup2");
