@@ -71,7 +71,7 @@ $("[type='email'] + button").on("click", function (event) {
     );
     $(button).attr("disabled", "disabled");
     var url =
-      "https://script.google.com/macros/s/AKfycbxX1FgAr4oTgvcB8Dz49EzBR8BTN0l3ol8lcNU6zJBufRQTS_KJKjdfVT5ARrR-yBNp/exec";
+      "https://script.google.com/macros/s/AKfycbwniboruhPfRRW9sW_r1TTs3GifIZsSmt02gPEYg25plXKZlmlRM2iCvyV9sX5tA3Q/exec";
     $.ajax({
       crossDomain: true,
       url: url,
