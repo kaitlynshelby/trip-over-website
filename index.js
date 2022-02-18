@@ -1,17 +1,5 @@
 var $panel = $(".slider__inner").first();
 
-$(".btnLearnMore").on("click", function () {
-  $("#about").append($("#sign-up"));
-  $panel.css("left", "-100%");
-  $(".mockup").toggleClass("show");
-});
-
-$(".btnGoBack").on("click", function () {
-  $("#lead-in").after($("#sign-up"));
-  $panel.css("left", "0");
-  $(".mockup").toggleClass("show");
-});
-
 const $badge = $(".download-badge");
 const $input_signup1 = $("#input-signup1");
 const $input_signup2 = $("#input-signup2");
@@ -83,7 +71,7 @@ $("[type='email'] + button").on("click", function (event) {
     );
     $(button).attr("disabled", "disabled");
     var url =
-      "https://script.google.com/macros/s/AKfycbztiP5lCtIm8Kl6neqgI7n3SvM6ibz_pxO9E7v_LlIB7gqcpTdKbkFfiNFI4OCazMB0/exec";
+      "https://script.google.com/macros/s/AKfycbxX1FgAr4oTgvcB8Dz49EzBR8BTN0l3ol8lcNU6zJBufRQTS_KJKjdfVT5ARrR-yBNp/exec";
     $.ajax({
       crossDomain: true,
       url: url,

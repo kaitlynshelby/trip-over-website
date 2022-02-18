@@ -45,75 +45,16 @@ body {
 
 #wrapper-canvas {
   display: block;
-  width: 100%;
   height: 100%;
 }
 
-.slider {
-  min-height: 100%;
-  height: auto;
-  position: relative;
-  transform: translateY(-100%);
-  overflow-x: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row nowrap;
-  -ms-flex-flow: row nowrap;
-  flex-flow: row nowrap;
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.slider__nav:checked {
-  -webkit-animation: check 0.4s linear forwards;
-  animation: check 0.4s linear forwards;
-}
-.slider__nav:checked:nth-of-type(1) ~ .slider__inner {
-  left: 0%;
-}
-.slider__nav:checked:nth-of-type(2) ~ .slider__inner {
-  left: -100%;
-}
-
-.slider__contents {
-  min-height: 100%;
-  height: auto;
-  width: 50%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-pack: center;
-}
-
-.slider__inner {
+#main {
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%;
-  min-height: 100%;
-  height: auto;
-  -webkit-transition: left 0.4s;
-  transition: left 0.4s;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row nowrap;
-  -ms-flex-flow: row nowrap;
-  flex-flow: row nowrap;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .download-badges input {
@@ -132,6 +73,7 @@ body {
 
 .mockup.hide {
   height: 100% !important;
+  left: 0px;
 }
 
 .show {
