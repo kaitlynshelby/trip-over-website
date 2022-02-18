@@ -40,10 +40,6 @@ body {
   line-height: 1.5;
 }
 
-.logo {
-  width: 70%;
-}
-
 #wrapper-canvas {
   display: block;
   height: 100%;

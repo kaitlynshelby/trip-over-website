@@ -46,3 +46,36 @@ $tooltip-arrow-color: $info;
 a {
   text-decoration: none;
 }
+
+#about,
+#subtagline {
+  font-size: small;
+}
+
+#tagline {
+  font-size: large;
+}
+
+#logo {
+  width: 100%;
+}
+
+@include media-breakpoint-up(sm) {
+  #about,
+  #subtagline {
+    font-size: medium;
+  }
+
+  #tagline {
+    font-size: x-large;
+  }
+  #logo {
+    width: 70%;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  #logo {
+    width: 80%;
+  }
+}

@@ -1,6 +1,14 @@
+const breakpoints = {
+  xs: "0",
+  sm: "576px",
+  md: "768px",
+  lg: "992px",
+  xl: "1200px",
+  xxl: "1400px",
+};
+
 const $badge = $(".download-badge");
-const $input_signup1 = $("#input-signup1");
-const $input_signup2 = $("#input-signup2");
+const $input_signup = $("#input-signup");
 
 const tooltipOptions = {
   html: true,
@@ -14,43 +22,64 @@ const tooltipOptions = {
   container: "body",
 };
 
-const tooltip = new bootstrap.Tooltip($input_signup1, tooltipOptions);
-const tooltip2 = new bootstrap.Tooltip($input_signup2, tooltipOptions);
-
-function signUpTooltip() {
-  var x = window.matchMedia("(max-width: 768px)");
-  let t;
-  if (x.matches) {
-    t = tooltip;
-  } else {
-    t = tooltip2;
-  }
-  return t;
-}
+const signupTooltip = new bootstrap.Tooltip($input_signup, tooltipOptions);
 
 $(".download-badge").on("click", function () {
-  signUpTooltip().show();
+  signupTooltip.show();
   setTimeout(function () {
-    signUpTooltip().hide();
+    signupTooltip.hide();
   }, 2000);
 });
 
 tooltipOptions.title =
   "<div class='p-3'>Thanks for signing up! We'll keep you updated with the latest news from Trip Over.</div>";
 
-const tooltip3 = new bootstrap.Tooltip($input_signup1, tooltipOptions);
-const tooltip4 = new bootstrap.Tooltip($input_signup2, tooltipOptions);
+const thanksTooltip = new bootstrap.Tooltip($input_signup, tooltipOptions);
 
-function thanksTooltip() {
-  var x = window.matchMedia("(max-width: 768px)");
-  let t;
-  if (x.matches) {
-    t = tooltip3;
-  } else {
-    t = tooltip4;
+var adjustFormSize = function () {
+  var xs = window.matchMedia("(min-width: " + breakpoints.xs + ")");
+  makeSmall(xs);
+  var sm = window.matchMedia("(min-width: " + breakpoints.sm + ")");
+  makeMedium(sm);
+  var lg = window.matchMedia("(min-width: " + breakpoints.md + ")");
+  makeLarge(lg);
+};
+
+var makeSmall = function (s) {
+  if (s.matches) {
+    $input_signup.addClass("input-group-sm").removeClass("input-group-lg");
+    $input_signup
+      .find("input")
+      .addClass("form-control-sm")
+      .removeClass("form-control-lg");
+    $input_signup.find("button").addClass("btn-sm").removeClass("btn-lg");
   }
-  return t;
-}
+};
+
+var makeMedium = function (s) {
+  if (s.matches) {
+    $input_signup.removeClass("input-group-sm").removeClass("input-group-lg");
+    $input_signup
+      .find("input")
+      .removeClass("form-control-sm")
+      .removeClass("form-control-lg");
+    $input_signup.find("button").removeClass("btn-sm").removeClass("btn-lg");
+  }
+};
+
+var makeLarge = function (s) {
+  if (s.matches) {
+    $input_signup.removeClass("input-group-sm").addClass("input-group-lg");
+    $input_signup
+      .find("input")
+      .removeClass("form-control-sm")
+      .addClass("form-control-lg");
+    $input_signup.find("button").removeClass("btn-sm").addClass("btn-lg");
+  }
+};
+
+adjustFormSize();
+$(window).on("resize", adjustFormSize);
 
 $("[type='email']").on("input", function () {
   var form = this.closest("form");
@@ -76,9 +105,9 @@ $("[type='email'] + button").on("click", function (event) {
       method: "POST",
       data: { email: input.val() },
       success: function () {
-        thanksTooltip().show();
+        thanksTooltip.show();
         setTimeout(function () {
-          thanksTooltip().hide();
+          thanksTooltip.hide();
         }, 3000);
         $(button).html("<i class='fa-solid fa-circle-check'></i>");
         input.attr("readonly", true);

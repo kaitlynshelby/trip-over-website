@@ -11993,4 +11993,36 @@ fieldset:disabled .btn {
 a {
   text-decoration: none;
 }
+
+#about,
+#subtagline {
+  font-size: small;
+}
+
+#tagline {
+  font-size: large;
+}
+
+#logo {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  #about,
+  #subtagline {
+    font-size: medium;
+  }
+  #tagline {
+    font-size: x-large;
+  }
+  #logo {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1400px) {
+  #logo {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=custom.css.map */

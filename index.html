@@ -23,11 +23,11 @@
         <div class="row h-100 justify-content-xxl-around">
             <div class="col-12 col-md-8 col-lg-7 col-xxl-5 offset-xxl-1 d-flex h-100 p-5">
                 <section class="text-center text-md-start my-3 my-auto mx-auto mx-md-0">
-                    <img src="/assets/images/logo-white.png" class="logo pb-5" alt="Trip Over Music" />
-                    <h4 class="text-white">The best music you've never heard</h4>
-                    <h6 class="text-light">from <a class="link-success" href="https://globalmusicproject.org/"
-                            target="_blank">Global
-                            Music Project</a></h6>
+                    <img id="logo" src="/assets/images/logo-white.png" class="pb-3" alt="Trip Over Music" />
+                    <div id="tagline" class="text-white">The best music you've never heard</div>
+                    <div id="subtagline" class="text-light">from <a class="link-success"
+                            href="https://globalmusicproject.org/" target="_blank">Global
+                            Music Project</a></div>
                     <div class="pt-3 download-badges">
                         <input type="image" class="download-badge" src="/assets/images/download_on_app_store.png"
                             title="Download on the App Store" />
@@ -59,19 +59,19 @@
                         </p>
                     </section>
                     <section id="sign-up">
-                        <form class="gform d-md-none">
+                        <!-- <form class="gform d-md-none">
                             <div id="input-signup1" class="input-group">
-                                <input class="form-control" type="email" name="email" placeholder="Email address"
-                                    required />
+                                <input id="txtEmail" class="form-control" type="email" name="email"
+                                    placeholder="Email address" required />
                                 <button type="button" class="btn btn-sm btn-primary">Notify
                                     Me!</button>
                             </div>
-                        </form>
-                        <form class="gform d-none d-md-block">
-                            <div id="input-signup2" class="input-group input-group-lg">
-                                <input class="form-control form-control-lg" type="email" name="email"
-                                    placeholder="Email address" required />
-                                <button type="button" class="btn btn-lg btn-primary">Notify
+                        </form> -->
+                        <form class="gform">
+                            <div id="input-signup" class="input-group">
+                                <input class="form-control" type="email" name="email" placeholder="Email address"
+                                    required />
+                                <button type="button" class="btn btn-primary">Notify
                                     Me!</button>
                             </div>
                         </form>
